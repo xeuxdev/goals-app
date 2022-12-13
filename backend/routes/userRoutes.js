@@ -6,10 +6,11 @@ const {
   loginUser,
   getMe,
 } = require("../controllers/userController")
+const { protect } = require("../middleware/authMiddleware")
 
 //register route
 router.post("/", registerUser)
 router.post("/login", loginUser)
-router.get("/me", getMe)
+router.get("/me", protect, getMe)
 
 module.exports = router
